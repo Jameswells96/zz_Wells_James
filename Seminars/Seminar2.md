@@ -28,3 +28,9 @@ When you click the **Knit** button a document will be generated that includes bo
     
 [This is a secret link](https://google.com/)
 
+
+```getwd
+getwd()
+```
+
+
