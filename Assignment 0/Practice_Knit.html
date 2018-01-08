@@ -144,11 +144,17 @@ Female = dataframe[dataframe$sex==&quot;Female&quot;,] #List of adult females on
 if(sum(Male$Freq) &gt; sum(Female$Freq)) {Gender = &quot;Males&quot;} else {Gender = &quot;Females&quot;}
 print(Gender) #This if-else statement indicates that there were more males on the Titanic</code></pre>
 <pre><code>## [1] &quot;Males&quot;</code></pre>
-<pre class="r"><code>ChildrenSurvived = dataframe[dataframe$child==&quot;Yes&quot;, dataframe$survived==&quot;Yes&quot;,] # making a list of the children who survived
-sum(ChildrenSurvived$Freq)</code></pre>
-<pre><code>## [1] 0</code></pre>
-<pre class="r"><code>head(Titanic)</code></pre>
-<pre><code>## [1]  0  0 35  0  0  0</code></pre>
+<pre class="r"><code>ChildrenSurvived = Child[Child$Survived==&quot;Yes&quot;,] #Making a list of the children who survived
+AdultsSurvived = Adult[Adult$Survived==&quot;Yes&quot;,] #Making a list of the adults who survived
+SurvivalRateC = sum(ChildrenSurvived$Freq)/sum(Child$Freq) #Calculating the survival rate of children on the Titanic
+print(SurvivalRateC) #Printing the survival rate of the children</code></pre>
+<pre><code>## [1] 0.5229358</code></pre>
+<pre class="r"><code>SurvivalRateA = sum(AdultsSurvived$Freq)/sum(Adult$Freq) #Calculating the survival rate of the adults on the Titanic
+print(SurvivalRateA) #Printing the survival rate of the adults</code></pre>
+<pre><code>## [1] 0.3126195</code></pre>
+<pre class="r"><code>if(SurvivalRateC &gt; SurvivalRateA) {Survivors = &quot;Children&quot;} else {Survivors = &quot;Adults&quot;}
+print(Survivors) #This if-else statement indicates that children have a higher survival rate</code></pre>
+<pre><code>## [1] &quot;Children&quot;</code></pre>
 </div>
 
 

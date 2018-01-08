@@ -16,9 +16,10 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 
-```{r Titanic}
+```{r 2.1 Passenger Breakdown}
 #This is where I will work on Assignment 0
-dataframe = data.frame(Titanic) #Passenger Breakdown
+#2.1 Passenger Breakdown
+dataframe = data.frame(Titanic) 
 Child = dataframe[dataframe$Age=="Child",] #List of the children on the Titanic
 Adult = dataframe[dataframe$Age=="Adult",] #List of the adults on the Titanic
 sum(Child$Freq) #This sum function will display the total number of children on the Titanic
@@ -29,13 +30,37 @@ Male = dataframe[dataframe$Sex=="Male",] #List of adult males on the Titanic
 Female = dataframe[dataframe$sex=="Female",] #List of adult females on the Titanic
 if(sum(Male$Freq) > sum(Female$Freq)) {Gender = "Males"} else {Gender = "Females"}
 print(Gender) #This if-else statement indicates that there were more males on the Titanic
+```
 
-ChildrenSurvived = dataframe[dataframe$child=="Yes", dataframe$survived=="Yes",] # making a list of the children who survived
-sum(ChildrenSurvived$Freq)
-head(Titanic)
+```{r 2.2 Survival}
+#2.2 Survival
+ChildrenSurvived = Child[Child$Survived=="Yes",] #Making a list of the children who survived
+AdultsSurvived = Adult[Adult$Survived=="Yes",] #Making a list of the adults who survived
+SurvivalRateC = sum(ChildrenSurvived$Freq)/sum(Child$Freq) #Calculating the survival rate of children on the Titanic
+print(SurvivalRateC) #Printing the survival rate of the children
+SurvivalRateA = sum(AdultsSurvived$Freq)/sum(Adult$Freq) #Calculating the survival rate of the adults on the Titanic
+print(SurvivalRateA) #Printing the survival rate of the adults
+if(SurvivalRateC > SurvivalRateA) {Survivors = "Children"} else {Survivors = "Adults"}
+print(Survivors) #This if-else statement indicates that children have a higher survival rate
 
-
-
+Crew = dataframe[dataframe$Class=="Crew",] #Creating a list of just the crew
+FirstClass = dataframe[dataframe$Class=="1st",] #Creating a list of 1st class passengers 
+SecondClass = dataframe[dataframe$Class=="2nd",] #Creating a list of 2nd class passengers
+ThirdClass = dataframe[dataframe$Class=="3rd",] #Creating a list of 3rd class passengers
+CrewSurvived = Crew[Crew$Survived=="Yes",] #Creating a second list of survived crew members
+FirstClassSurvived = FirstClass[FirstClass$Survived=="Yes",] #Creating a second list of survived 1st class passengers
+SecondClassSurvived = SecondClass[SecondClass$Survived=="Yes",] #Creating a second list of survived 2nd class passengers
+ThirdClassSurvived = ThirdClass[ThirdClass$Survived=="Yes",] #Creating a second list of 3rd class passengers
+SurvivalRateCrew = sum(CrewSurvived$Freq)/sum(Crew$Freq) #Calculating the crew members' survival rate
+print(SurvivalRateCrew) #Printing survival rate
+SurvivalRateFirst = sum(FirstClassSurvived$Freq)/sum(FirstClass$Freq) #Calculating the 1st class passengers' survival rate
+print(SurvivalRateFirst) #Printing survival rate
+SurvivalRateSecond = sum(SecondClassSurvived$Freq)/sum(SecondClass$Freq) #Calculating the 2nd class passengers' survival rate
+print(SurvivalRateSecond) #Printing survival rate
+SurvivalRateThird = sum(ThirdClassSurvived$Freq)/sum(ThirdClass$Freq) #Calculating the 3rd class passengers' survival rate
+print(SurvivalRateThird) #Printing survival rate
+SurvivalList <- c(SurvivalRateCrew, SurvivalRateFirst, SurvivalRateSecond, SurvivalRateThird)
+print(max(SurvivalList)) #Indicating that firstclass adults and children had the highest survival rate of 0.6246154
 
 
 
