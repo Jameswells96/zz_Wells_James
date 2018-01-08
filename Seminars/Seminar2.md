@@ -1,15 +1,13 @@
 ---
 title: "Seminar2"
 author: "James Wells"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: "07 January, 2018"
 output: 
   html_document: 
     keep_md: yes
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## R Markdown
 
