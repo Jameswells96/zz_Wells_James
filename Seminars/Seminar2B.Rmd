@@ -9,8 +9,29 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+#Part1: First Time ggplot-ing
 ```{r load}
 library(tidyverse)
+
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+```
+
+#Part2: The layered grammar
+```{r basic concepts}
+
+apropos("^geom_")
+apropos("stat_")
+apropos("^scale_")
+
+ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy)) +
+  geom_point() +
+  geom_smooth()
+```
+
+#Part3: Deliverable
+```{r deliverable}
 
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv, size = class)) + geom_point() 
 ```
