@@ -167,7 +167,7 @@ FirstClassSurvived = FirstClass[FirstClass$Survived==&quot;Yes&quot;,] #Creating
 SecondClassSurvived = SecondClass[SecondClass$Survived==&quot;Yes&quot;,] #Creating a second list of survived 2nd class passengers
 ThirdClassSurvived = ThirdClass[ThirdClass$Survived==&quot;Yes&quot;,] #Creating a second list of 3rd class passengers
 SurvivalRateCrew = sum(CrewSurvived$Freq)/sum(Crew$Freq) #Calculating the crew members' survival rate
-print(SurvivalRateCrew) #Printing survival rate</code></pre>
+print(SurvivalRateCrew) #Printing survival rate of the crew</code></pre>
 <pre><code>## [1] 0.239548</code></pre>
 <pre class="r"><code>SurvivalRateFirst = sum(FirstClassSurvived$Freq)/sum(FirstClass$Freq) #Calculating the 1st class passengers' survival rate
 print(SurvivalRateFirst) #Printing survival rate</code></pre>
@@ -182,6 +182,12 @@ print(SurvivalRateThird) #Printing survival rate</code></pre>
 ClassList &lt;- c(&quot;Crew&quot;, &quot;1stClass&quot;, &quot;2ndClass&quot;, &quot;3rdClass&quot;) #A list to hold the names of the 4 classes in the same order as the SurvivalList
 print(ClassList[which.max(SurvivalList)]) #The highest value in the SurvivalList will be used to print the name of from the ClassList using the which.max function</code></pre>
 <pre><code>## [1] &quot;1stClass&quot;</code></pre>
+</div>
+<div id="data-visualization" class="section level1">
+<h1>Data Visualization</h1>
+<pre class="r"><code>getwd()</code></pre>
+<pre><code>## [1] &quot;C:/Users/User/Contacts/Desktop/git_temp/zz_Wells_James/Assignment 0&quot;</code></pre>
+<pre class="r"><code>Table1 = (data.frame(ToothGrowth))</code></pre>
 </div>
 
 
