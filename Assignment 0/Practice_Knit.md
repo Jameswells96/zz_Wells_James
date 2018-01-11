@@ -138,16 +138,34 @@ print(ClassList[which.max(SurvivalList)]) #The highest value in the SurvivalList
 #Data Visualization
 
 ```r
-getwd()
+#Note that the toothGrowth data needs to be called by read.table function)
+library(tidyverse)
 ```
 
 ```
-## [1] "C:/Users/User/Contacts/Desktop/git_temp/zz_Wells_James/Assignment 0"
+## -- Attaching packages ------------------------------------------------------------ tidyverse 1.2.1 --
+```
+
+```
+## v ggplot2 2.2.1     v purrr   0.2.4
+## v tibble  1.4.1     v dplyr   0.7.4
+## v tidyr   0.7.2     v stringr 1.2.0
+## v readr   1.1.1     v forcats 0.2.0
+```
+
+```
+## -- Conflicts --------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
 ```
 
 ```r
-Table1 = (data.frame(ToothGrowth))
+ggplot(data = ToothGrowth) + 
+  geom_bar(mapping = aes(x=dose, y=len, fill=supp),
+           stat = 'identity')
 ```
+
+![](Practice_Knit_files/figure-html/3.0 Data Visualization-1.png)<!-- -->
 
 
 

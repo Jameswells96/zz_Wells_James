@@ -62,8 +62,11 @@ print(ClassList[which.max(SurvivalList)]) #The highest value in the SurvivalList
 ```
 #Data Visualization
 ```{r 3.0 Data Visualization}
-getwd()
-Table1 = (data.frame(ToothGrowth))
+#Note that the toothGrowth data needs to be called by read.table function)
+library(tidyverse)
+ggplot(data = ToothGrowth) + 
+  geom_bar(mapping = aes(x=dose, y=len, fill=supp),
+           stat = 'identity')
 ```
 
 
