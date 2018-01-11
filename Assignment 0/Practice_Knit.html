@@ -125,12 +125,11 @@ $(document).ready(function () {
 </div>
 
 
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+<div id="passenger-breakdown" class="section level1">
+<h1>Passenger Breakdown</h1>
 <pre class="r"><code>#This is where I will work on Assignment 0
-dataframe = data.frame(Titanic) #Passenger Breakdown
+#2.1 Passenger Breakdown
+dataframe = data.frame(Titanic) 
 Child = dataframe[dataframe$Age==&quot;Child&quot;,] #List of the children on the Titanic
 Adult = dataframe[dataframe$Age==&quot;Adult&quot;,] #List of the adults on the Titanic
 sum(Child$Freq) #This sum function will display the total number of children on the Titanic</code></pre>
@@ -144,7 +143,11 @@ Female = dataframe[dataframe$sex==&quot;Female&quot;,] #List of adult females on
 if(sum(Male$Freq) &gt; sum(Female$Freq)) {Gender = &quot;Males&quot;} else {Gender = &quot;Females&quot;}
 print(Gender) #This if-else statement indicates that there were more males on the Titanic</code></pre>
 <pre><code>## [1] &quot;Males&quot;</code></pre>
-<pre class="r"><code>ChildrenSurvived = Child[Child$Survived==&quot;Yes&quot;,] #Making a list of the children who survived
+</div>
+<div id="survival" class="section level1">
+<h1>Survival</h1>
+<pre class="r"><code>#2.2 Survival
+ChildrenSurvived = Child[Child$Survived==&quot;Yes&quot;,] #Making a list of the children who survived
 AdultsSurvived = Adult[Adult$Survived==&quot;Yes&quot;,] #Making a list of the adults who survived
 SurvivalRateC = sum(ChildrenSurvived$Freq)/sum(Child$Freq) #Calculating the survival rate of children on the Titanic
 print(SurvivalRateC) #Printing the survival rate of the children</code></pre>
@@ -155,6 +158,30 @@ print(SurvivalRateA) #Printing the survival rate of the adults</code></pre>
 <pre class="r"><code>if(SurvivalRateC &gt; SurvivalRateA) {Survivors = &quot;Children&quot;} else {Survivors = &quot;Adults&quot;}
 print(Survivors) #This if-else statement indicates that children have a higher survival rate</code></pre>
 <pre><code>## [1] &quot;Children&quot;</code></pre>
+<pre class="r"><code>Crew = dataframe[dataframe$Class==&quot;Crew&quot;,] #Creating a list of just the crew
+FirstClass = dataframe[dataframe$Class==&quot;1st&quot;,] #Creating a list of 1st class passengers 
+SecondClass = dataframe[dataframe$Class==&quot;2nd&quot;,] #Creating a list of 2nd class passengers
+ThirdClass = dataframe[dataframe$Class==&quot;3rd&quot;,] #Creating a list of 3rd class passengers
+CrewSurvived = Crew[Crew$Survived==&quot;Yes&quot;,] #Creating a second list of survived crew members
+FirstClassSurvived = FirstClass[FirstClass$Survived==&quot;Yes&quot;,] #Creating a second list of survived 1st class passengers
+SecondClassSurvived = SecondClass[SecondClass$Survived==&quot;Yes&quot;,] #Creating a second list of survived 2nd class passengers
+ThirdClassSurvived = ThirdClass[ThirdClass$Survived==&quot;Yes&quot;,] #Creating a second list of 3rd class passengers
+SurvivalRateCrew = sum(CrewSurvived$Freq)/sum(Crew$Freq) #Calculating the crew members' survival rate
+print(SurvivalRateCrew) #Printing survival rate</code></pre>
+<pre><code>## [1] 0.239548</code></pre>
+<pre class="r"><code>SurvivalRateFirst = sum(FirstClassSurvived$Freq)/sum(FirstClass$Freq) #Calculating the 1st class passengers' survival rate
+print(SurvivalRateFirst) #Printing survival rate</code></pre>
+<pre><code>## [1] 0.6246154</code></pre>
+<pre class="r"><code>SurvivalRateSecond = sum(SecondClassSurvived$Freq)/sum(SecondClass$Freq) #Calculating the 2nd class passengers' survival rate
+print(SurvivalRateSecond) #Printing survival rate</code></pre>
+<pre><code>## [1] 0.4140351</code></pre>
+<pre class="r"><code>SurvivalRateThird = sum(ThirdClassSurvived$Freq)/sum(ThirdClass$Freq) #Calculating the 3rd class passengers' survival rate
+print(SurvivalRateThird) #Printing survival rate</code></pre>
+<pre><code>## [1] 0.2521246</code></pre>
+<pre class="r"><code>SurvivalList &lt;- c(SurvivalRateCrew, SurvivalRateFirst, SurvivalRateSecond, SurvivalRateThird) #A list to compile the 4 survival rates
+ClassList &lt;- c(&quot;Crew&quot;, &quot;1stClass&quot;, &quot;2ndClass&quot;, &quot;3rdClass&quot;) #A list to hold the names of the 4 classes in the same order as the SurvivalList
+print(ClassList[which.max(SurvivalList)]) #The highest value in the SurvivalList will be used to print the name of from the ClassList using the which.max function</code></pre>
+<pre><code>## [1] &quot;1stClass&quot;</code></pre>
 </div>
 
 

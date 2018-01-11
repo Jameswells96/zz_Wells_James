@@ -9,13 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-
+#Passenger Breakdown
 ```{r 2.1 Passenger Breakdown}
 #This is where I will work on Assignment 0
 #2.1 Passenger Breakdown
@@ -31,7 +25,7 @@ Female = dataframe[dataframe$sex=="Female",] #List of adult females on the Titan
 if(sum(Male$Freq) > sum(Female$Freq)) {Gender = "Males"} else {Gender = "Females"}
 print(Gender) #This if-else statement indicates that there were more males on the Titanic
 ```
-
+#Survival
 ```{r 2.2 Survival}
 #2.2 Survival
 ChildrenSurvived = Child[Child$Survived=="Yes",] #Making a list of the children who survived
@@ -52,18 +46,23 @@ FirstClassSurvived = FirstClass[FirstClass$Survived=="Yes",] #Creating a second 
 SecondClassSurvived = SecondClass[SecondClass$Survived=="Yes",] #Creating a second list of survived 2nd class passengers
 ThirdClassSurvived = ThirdClass[ThirdClass$Survived=="Yes",] #Creating a second list of 3rd class passengers
 SurvivalRateCrew = sum(CrewSurvived$Freq)/sum(Crew$Freq) #Calculating the crew members' survival rate
-print(SurvivalRateCrew) #Printing survival rate
+print(SurvivalRateCrew) #Printing survival rate of the crew
 SurvivalRateFirst = sum(FirstClassSurvived$Freq)/sum(FirstClass$Freq) #Calculating the 1st class passengers' survival rate
 print(SurvivalRateFirst) #Printing survival rate
 SurvivalRateSecond = sum(SecondClassSurvived$Freq)/sum(SecondClass$Freq) #Calculating the 2nd class passengers' survival rate
 print(SurvivalRateSecond) #Printing survival rate
 SurvivalRateThird = sum(ThirdClassSurvived$Freq)/sum(ThirdClass$Freq) #Calculating the 3rd class passengers' survival rate
 print(SurvivalRateThird) #Printing survival rate
-SurvivalList <- c(SurvivalRateCrew, SurvivalRateFirst, SurvivalRateSecond, SurvivalRateThird)
-print(max(SurvivalList)) #Indicating that firstclass adults and children had the highest survival rate of 0.6246154
-
-
+SurvivalList <- c(SurvivalRateCrew, SurvivalRateFirst, SurvivalRateSecond, SurvivalRateThird) #A list to compile the 4 survival rates
+ClassList <- c("Crew", "1stClass", "2ndClass", "3rdClass") #A list to hold the names of the 4 classes in the same order as the SurvivalList
+print(ClassList[which.max(SurvivalList)]) #The highest value in the SurvivalList will be used to print the name of from the ClassList using the which.max function
 
 ```
+#Data Visualization
+```{r 3.0 Data Visualization}
+getwd()
+Table1 = (data.frame(ToothGrowth))
+```
+
 
 
