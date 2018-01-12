@@ -68,6 +68,7 @@ ggplot(data = ToothGrowth) +
   geom_bar(mapping = aes(x=dose, y=len, fill=supp),
            stat = 'identity')
 ```
+#
 
 
 
