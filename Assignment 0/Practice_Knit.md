@@ -14,7 +14,22 @@ output:
 ```r
 #This is where I will work on Assignment 0
 #2.1 Passenger Breakdown
-dataframe = data.frame(Titanic) 
+
+dataframe = data.frame(Titanic)
+
+str(dataframe) #This str function allows the visualization of the dataset
+```
+
+```
+## 'data.frame':	32 obs. of  5 variables:
+##  $ Class   : Factor w/ 4 levels "1st","2nd","3rd",..: 1 2 3 4 1 2 3 4 1 2 ...
+##  $ Sex     : Factor w/ 2 levels "Male","Female": 1 1 1 1 2 2 2 2 1 1 ...
+##  $ Age     : Factor w/ 2 levels "Child","Adult": 1 1 1 1 1 1 1 1 2 2 ...
+##  $ Survived: Factor w/ 2 levels "No","Yes": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Freq    : num  0 0 35 0 0 0 17 0 118 154 ...
+```
+
+```r
 Child = dataframe[dataframe$Age=="Child",] #List of the children on the Titanic
 Adult = dataframe[dataframe$Age=="Adult",] #List of the adults on the Titanic
 sum(Child$Freq) #This sum function will display the total number of children on the Titanic
@@ -43,12 +58,12 @@ sum(dataframe$Freq) # This sum function will display the total number of people 
 ```r
 Male = dataframe[dataframe$Sex=="Male",] #List of adult males on the Titanic
 Female = dataframe[dataframe$sex=="Female",] #List of adult females on the Titanic
-if(sum(Male$Freq) > sum(Female$Freq)) {Gender = "Males"} else {Gender = "Females"}
+if(sum(Male$Freq) > sum(Female$Freq)) {Gender = "There were more males on the Titanic"} else {Gender = "There were more females on the Titanic"}
 print(Gender) #This if-else statement indicates that there were more males on the Titanic
 ```
 
 ```
-## [1] "Males"
+## [1] "There were more males on the Titanic"
 ```
 #Survival
 
@@ -143,7 +158,7 @@ library(tidyverse)
 ```
 
 ```
-## -- Attaching packages ------------------------------------------------------------ tidyverse 1.2.1 --
+## -- Attaching packages ----------------------------------------------------------------------------------------- tidyverse 1.2.1 --
 ```
 
 ```
@@ -154,18 +169,44 @@ library(tidyverse)
 ```
 
 ```
-## -- Conflicts --------------------------------------------------------------- tidyverse_conflicts() --
+## -- Conflicts -------------------------------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
 
 ```r
-ggplot(data = ToothGrowth) + 
-  geom_bar(mapping = aes(x=dose, y=len, fill=supp),
-           stat = 'identity')
+ToothData = read.table("https://raw.githubusercontent.com/STAT540-UBC/STAT540-UBC.github.io/master/homework/practice_assignment/guinea_pigs_tooth_growth.txt", header = TRUE) #This read.table function is loading the data from a website
+str(ToothData) #
+```
+
+```
+## 'data.frame':	60 obs. of  3 variables:
+##  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
+##  $ supp: Factor w/ 2 levels "OJ","VC": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ dose: num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...
+```
+
+```r
+ggplot(data = ToothData) #This str function helps us visualize the data in a compact form
 ```
 
 ![](Practice_Knit_files/figure-html/3.0 Data Visualization-1.png)<!-- -->
+
+```r
+  geom_bar(mapping = aes(x=dose, y=len, fill=supp), position = "dodge",
+           stat = 'identity', ggtitle = "The Effect of Vitamin C on Tooth Growth in Guinea Pigs", xlab = "Dosage mg/day", ylab = "Odontoblast Length")
+```
+
+```
+## Warning: Ignoring unknown parameters: ggtitle, xlab, ylab
+```
+
+```
+## mapping: x = dose, y = len, fill = supp 
+## geom_bar: width = NULL, na.rm = FALSE
+## stat_identity: na.rm = FALSE
+## position_dodge
+```
 #
 
 

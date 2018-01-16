@@ -15,7 +15,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r 2.1 Passenger Breakdown}
 #This is where I will work on Assignment 0
 #2.1 Passenger Breakdown
-dataframe = data.frame(Titanic) 
+
+dataframe = data.frame(Titanic)
+
+str(dataframe) #This str function allows the visualization of the dataset
+
 Child = dataframe[dataframe$Age=="Child",] #List of the children on the Titanic
 Adult = dataframe[dataframe$Age=="Adult",] #List of the adults on the Titanic
 sum(Child$Freq) #This sum function will display the total number of children on the Titanic
@@ -24,7 +28,7 @@ sum(dataframe$Freq) # This sum function will display the total number of people 
 
 Male = dataframe[dataframe$Sex=="Male",] #List of adult males on the Titanic
 Female = dataframe[dataframe$sex=="Female",] #List of adult females on the Titanic
-if(sum(Male$Freq) > sum(Female$Freq)) {Gender = "Males"} else {Gender = "Females"}
+if(sum(Male$Freq) > sum(Female$Freq)) {Gender = "There were more males on the Titanic"} else {Gender = "There were more females on the Titanic"}
 print(Gender) #This if-else statement indicates that there were more males on the Titanic
 ```
 #Survival
@@ -64,9 +68,11 @@ print(ClassList[which.max(SurvivalList)]) #The highest value in the SurvivalList
 ```{r 3.0 Data Visualization}
 #Note that the toothGrowth data needs to be called by read.table function)
 library(tidyverse)
-ggplot(data = ToothGrowth) + 
-  geom_bar(mapping = aes(x=dose, y=len, fill=supp),
-           stat = 'identity')
+ToothData = read.table("https://raw.githubusercontent.com/STAT540-UBC/STAT540-UBC.github.io/master/homework/practice_assignment/guinea_pigs_tooth_growth.txt", header = TRUE) #This read.table function is loading the data from a website
+str(ToothData) #
+ggplot(data = ToothData) + #This str function helps us visualize the data in a compact form
+  geom_bar(mapping = aes(x=dose, y=len, fill=supp), position = "dodge",
+           stat = 'identity') + ggtitle("The Effect of Vitamin C on Tooth Growth in Guinea Pigs") + xlab("Supplement dosage (mg/day)") + ylab("Odontoblast Length") #The ToothData is applied to a bar graph to display the two variables tooth length and supplement dosage. The "fill" variable 
 ```
 #
 
