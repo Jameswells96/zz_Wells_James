@@ -15,7 +15,7 @@ output:
 #This is where I will work on Assignment 0
 #2.1 Passenger Breakdown
 
-dataframe = data.frame(Titanic)
+dataframe = data.frame(Titanic) #This converts the Titanic data to a data frame format
 
 str(dataframe) #This str function allows the visualization of the dataset
 ```
@@ -89,12 +89,12 @@ print(SurvivalRateA) #Printing the survival rate of the adults
 ```
 
 ```r
-if(SurvivalRateC > SurvivalRateA) {Survivors = "Children"} else {Survivors = "Adults"}
+if(SurvivalRateC > SurvivalRateA) {Survivors = "Children had the higher survival rate"} else {Survivors = "Adults had the higher survival rate"}
 print(Survivors) #This if-else statement indicates that children have a higher survival rate
 ```
 
 ```
-## [1] "Children"
+## [1] "Children had the higher survival rate"
 ```
 
 ```r
@@ -143,12 +143,12 @@ print(SurvivalRateThird) #Printing survival rate
 
 ```r
 SurvivalList <- c(SurvivalRateCrew, SurvivalRateFirst, SurvivalRateSecond, SurvivalRateThird) #A list to compile the 4 survival rates
-ClassList <- c("Crew", "1stClass", "2ndClass", "3rdClass") #A list to hold the names of the 4 classes in the same order as the SurvivalList
+ClassList <- c("The crew had the highest survival rate", "1st class had the highest survival rate", "2nd class had the highest survival rate", "3rd class had the highest survival rate") #A list to hold the names of the 4 classes in the same order as the SurvivalList
 print(ClassList[which.max(SurvivalList)]) #The highest value in the SurvivalList will be used to print the name of from the ClassList using the which.max function
 ```
 
 ```
-## [1] "1stClass"
+## [1] "1st class had the highest survival rate"
 ```
 #Data Visualization
 
@@ -158,7 +158,7 @@ library(tidyverse)
 ```
 
 ```
-## -- Attaching packages ----------------------------------------------------------------------------------------- tidyverse 1.2.1 --
+## -- Attaching packages ------------------------------------------------------------------------------------------ tidyverse 1.2.1 --
 ```
 
 ```
@@ -169,7 +169,7 @@ library(tidyverse)
 ```
 
 ```
-## -- Conflicts -------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+## -- Conflicts --------------------------------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
@@ -187,27 +187,17 @@ str(ToothData) #
 ```
 
 ```r
-ggplot(data = ToothData) #This str function helps us visualize the data in a compact form
+ggplot(data = ToothData) + #This str function helps us visualize the data in a compact form
+  geom_bar(mapping = aes(x=dose, y=len, fill=supp), position = "dodge",
+           stat = 'identity') + ggtitle("The Effect of Vitamin C on Tooth Growth in Guinea Pigs") + xlab("Supplement dosage (mg/day)") + ylab("Odontoblast Length") #The ToothData is displayed using a ggplot bar graph 
 ```
 
 ![](Practice_Knit_files/figure-html/3.0 Data Visualization-1.png)<!-- -->
 
-```r
-  geom_bar(mapping = aes(x=dose, y=len, fill=supp), position = "dodge",
-           stat = 'identity', ggtitle = "The Effect of Vitamin C on Tooth Growth in Guinea Pigs", xlab = "Dosage mg/day", ylab = "Odontoblast Length")
-```
+##Legend: OG = Orange Juice VC = Vitamin C (absorbic acid)
 
-```
-## Warning: Ignoring unknown parameters: ggtitle, xlab, ylab
-```
-
-```
-## mapping: x = dose, y = len, fill = supp 
-## geom_bar: width = NULL, na.rm = FALSE
-## stat_identity: na.rm = FALSE
-## position_dodge
-```
-#
+#Data Visualization Conclusion
+### The graph type and parameters chosen displays the data in an informative way. I choose to display the guinea pig tooth growth data in a bar graph to provide a comparative view between two discrete variables; Odontoblast length and dosage of the supplement. The fill parameter was used to further differentiate between the third variable, the two supplements used; orange juice and vitamin C (absorbic acid) and displayed side by side using the position parameter for easy visual comparison. It can be determined by analyzing the bar graph that a steady increase in tooth growth can be seen as the dosage increased for each supplement. Additionally, vitamin C only showed a superior growth increase to orange juice at 2 mg/day and not for 0.5 and 1 mg/day.
 
 
 
